@@ -1,2 +1,20 @@
-# ignore task2
-Task2/
+# ignore:
+.settings/
+Drivers/
+
+# ignore các file có đuôi:
+*.cproject
+*.project
+*.mxproject
+*.ld
+*.launch
+*.bin
+*.elf
+*.asm
+*.map
+*.list
+
+# ignore các file sau:
+**/makefile
+**/objects
+**/sources
