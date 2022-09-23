@@ -13,8 +13,14 @@ Drivers/
 *.asm
 *.map
 *.list
+*.mk
 
 # ignore các file sau:
 **/makefile
 **/objects
 **/sources
+
+# ignore ngoại trừ main.c
+!Core/Src/main.c
+!Core/Inc/main.h
+Core/
