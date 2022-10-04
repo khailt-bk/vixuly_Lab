@@ -6,12 +6,13 @@
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2022 STMicroelectronics.
-  * All rights reserved.
+  * <h2><center>&copy; Copyright (c) 2022 STMicroelectronics.
+  * All rights reserved.</center></h2>
   *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
+  * This software component is licensed by ST under BSD 3-Clause license,
+  * the "License"; You may not use this file except in compliance with the
+  * License. You may obtain a copy of the License at:
+  *                        opensource.org/licenses/BSD-3-Clause
   *
   ******************************************************************************
   */
@@ -90,54 +91,120 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  int red_status = 0;
-  int green_status = 1;
-  int counter = 6;
+  int led_status = 1;
+  int counter  = 3;
+
   while (1)
   {
-    /* USER CODE END WHILE */
+	  counter = counter -1 ;  // 3, 2, 1, 0
+   /* USER CODE END WHILE */
+	  if(led_status == 1)
+	  {
+		  if(counter == 2 || counter ==1)
+		  {
+			  //Line 1,3 : Green On, Line 2,4: Red on
+			 		  	 	  HAL_GPIO_WritePin ( LED_RED_Line1_GPIO_Port , LED_RED_Line1_Pin , RESET ); // red line 1 off
+			 		  	 	  HAL_GPIO_WritePin ( LED_RED_Line3_GPIO_Port , LED_RED_Line3_Pin , RESET ); // red line 3 off
+			 		  	 	  HAL_GPIO_WritePin ( Led_Yellow_1_GPIO_Port , Led_Yellow_1_Pin , RESET ); //yellow 1 off
+			 		  		  HAL_GPIO_WritePin ( Led_Yellow_3_GPIO_Port , Led_Yellow_3_Pin , RESET ); //yellow 3 off
+			 		  	 	  HAL_GPIO_WritePin ( Led_Green_1_GPIO_Port , Led_Green_1_Pin , SET ); // green 1,3 on
+			 		  	 	  HAL_GPIO_WritePin ( Led_Green_3_GPIO_Port , Led_Green_3_Pin , SET );
 
-	  if (red_status == 0 && green_status == 1) { // red 1 on green 1 off
-		counter --;
-		if (counter != 0) {
-			HAL_GPIO_WritePin(Led_Red_GPIO_Port,Led_Red_Pin,SET );
-			HAL_GPIO_WritePin(Led_Yellow_GPIO_Port,Led_Yellow_Pin,RESET );
-			HAL_GPIO_WritePin(Led_Green_GPIO_Port,Led_Green_Pin,RESET );
-		}
-		if (counter == 0) {
-			red_status = 1;
-			green_status = 0;
-			counter = 4;
-		}
-	  }
-	  if (red_status == 1 && green_status == 0) { // red 1 off green 1 on
-		  counter --;
-		  if (counter != 0) {
-			HAL_GPIO_WritePin(Led_Red_GPIO_Port,Led_Red_Pin,RESET );
-			HAL_GPIO_WritePin(Led_Green_GPIO_Port,Led_Green_Pin,SET );
-			HAL_GPIO_WritePin(Led_Yellow_GPIO_Port,Led_Yellow_Pin,RESET );
+			 		  	 	  HAL_GPIO_WritePin ( Led_Yellow_2_GPIO_Port , Led_Yellow_2_Pin , RESET );
+			 		  	 	  HAL_GPIO_WritePin ( Led_Yellow_4_GPIO_Port , Led_Yellow_4_Pin , RESET );
+			 		  	 	  HAL_GPIO_WritePin ( Led_Green_2_GPIO_Port , Led_Green_2_Pin , RESET );
+			 		  	 	  HAL_GPIO_WritePin ( Led_Green_4_GPIO_Port , Led_Green_4_Pin , RESET );
+			 		  	 	  HAL_GPIO_WritePin ( Led_Red_2_GPIO_Port , Led_Red_2_Pin , SET );
+			 		  	 	  HAL_GPIO_WritePin ( Led_Red_4_GPIO_Port , Led_Red_4_Pin , SET );
 		  }
-		  if (counter == 0) {
-			  red_status = 1;
-			  green_status = 1;
-			  counter = 3;
+		  if(counter == 0)
+		  {
+			  led_status = 2;
+			  counter= 3;
 		  }
 	  }
-	  if (red_status == 1 && green_status == 1) { // red 1 off green 1 off -> yellow 1 on
-		  counter --;
-		  if (counter != 0) {
-		  HAL_GPIO_WritePin(Led_Red_GPIO_Port,Led_Red_Pin,RESET );
-		  HAL_GPIO_WritePin(Led_Green_GPIO_Port,Led_Green_Pin,RESET );
-		  HAL_GPIO_WritePin(Led_Yellow_GPIO_Port,Led_Yellow_Pin,SET );
+	  if(led_status == 2)
+	  {
+		  counter = counter -1 ;  // 3-->0
+		  if(counter == 2 || counter ==1 )
+		  {
+			  // Line 1,3 : Yellow On, Line 2,4: Red on
+			  	 	 HAL_GPIO_WritePin ( Led_Red_2_GPIO_Port , Led_Red_2_Pin , SET );
+			  	 	 HAL_GPIO_WritePin ( Led_Red_4_GPIO_Port , Led_Red_4_Pin , SET );
+			  	 	 HAL_GPIO_WritePin ( Led_Yellow_2_GPIO_Port , Led_Yellow_2_Pin , RESET );
+			  	     HAL_GPIO_WritePin ( Led_Yellow_4_GPIO_Port , Led_Yellow_4_Pin , RESET );
+			  	 	 HAL_GPIO_WritePin ( Led_Green_2_GPIO_Port , Led_Green_2_Pin , RESET );
+			  	 	 HAL_GPIO_WritePin ( Led_Green_4_GPIO_Port , Led_Green_4_Pin , RESET );
+
+			  	 	  HAL_GPIO_WritePin ( Led_Green_1_GPIO_Port , Led_Green_1_Pin , RESET );
+			  	 	  HAL_GPIO_WritePin ( Led_Green_3_GPIO_Port , Led_Green_3_Pin , RESET );
+			  	 	  HAL_GPIO_WritePin ( Led_Red_1_GPIO_Port , Led_Red_1_Pin , RESET );
+			  	 	  HAL_GPIO_WritePin ( Led_Red_3_GPIO_Port , Led_Red_3_Pin , RESET );
+			  	 	  HAL_GPIO_WritePin ( Led_Yellow_1_GPIO_Port , Led_Yellow_1_Pin , SET );
+			  	 	  HAL_GPIO_WritePin ( Led_Yellow_3_GPIO_Port , Led_Yellow_3_Pin , SET );
 		  }
-		  if (counter == 0) {
-			  red_status = 0;
-			  green_status = 1;
-			  counter = 5;
+		  if(counter == 0)
+		  {
+			  led_status = 3;
+			  counter= 3;
 		  }
 	  }
-	  	HAL_Delay(1000);
-    /* USER CODE BEGIN 3 */
+        if(led_status == 3)
+        {
+        	counter = counter -1 ;  // 3-->0
+        	if(counter == 2|| counter==1 )
+        	{
+        		// Line 1,3 : Red On, Line 2,4: Green on
+        			 	 HAL_GPIO_WritePin ( Led_Red_2_GPIO_Port , Led_Red_2_Pin , RESET );
+        			 	 HAL_GPIO_WritePin ( Led_Red_4_GPIO_Port , Led_Red_4_Pin , RESET );
+        			 	 HAL_GPIO_WritePin ( Led_Yellow_2_GPIO_Port , Led_Yellow_2_Pin , RESET );
+        			 	 HAL_GPIO_WritePin ( Led_Yellow_4_GPIO_Port , Led_Yellow_4_Pin , RESET );
+        			 	 HAL_GPIO_WritePin ( Led_Green_2_GPIO_Port , Led_Green_2_Pin , SET );
+        			 	 HAL_GPIO_WritePin ( Led_Green_4_GPIO_Port , Led_Green_4_Pin , SET );
+
+
+        			 	 HAL_GPIO_WritePin ( Led_Green_1_GPIO_Port , Led_Green_1_Pin , RESET );
+        			 	 HAL_GPIO_WritePin ( Led_Green_3_GPIO_Port , Led_Green_3_Pin , RESET );
+        			 	 HAL_GPIO_WritePin ( Led_Red_1_GPIO_Port , Led_Red_1_Pin , SET );
+        			 	 HAL_GPIO_WritePin ( Led_Red_3_GPIO_Port , Led_Red_3_Pin , SET );
+        			 	 HAL_GPIO_WritePin ( Led_Yellow_1_GPIO_Port , Led_Yellow_1_Pin , RESET );
+        			 	 HAL_GPIO_WritePin ( Led_Yellow_3_GPIO_Port , Led_Yellow_3_Pin , RESET );
+        	}
+        	if(counter==0)
+        	{
+        		  led_status = 4;
+        		  counter= 3;
+        	}
+        }
+	     if(led_status == 4)
+	     {
+	    	 counter = counter -1;
+	    	 if(counter == 2 || counter == 1)
+	    	 {
+	    		 // Line 1,3 : Red On, Line 2,4: Yellow on
+
+	    			 	 HAL_GPIO_WritePin ( Led_Green_1_GPIO_Port , Led_Green_1_Pin , RESET );
+	    			 	 HAL_GPIO_WritePin ( Led_Green_3_GPIO_Port , Led_Green_3_Pin , RESET );
+	    			 	 HAL_GPIO_WritePin ( Led_Red_1_GPIO_Port , Led_Red_1_Pin , SET );
+	    			 	 HAL_GPIO_WritePin ( Led_Red_3_GPIO_Port , Led_Red_3_Pin , SET );
+	    			 	 HAL_GPIO_WritePin ( Led_Yellow_1_GPIO_Port , Led_Yellow_1_Pin , RESET );
+	    			 	 HAL_GPIO_WritePin ( Led_Yellow_3_GPIO_Port , Led_Yellow_3_Pin , RESET );
+
+	    				 HAL_GPIO_WritePin ( Led_Red_2_GPIO_Port , Led_Red_2_Pin , RESET );
+	    				 HAL_GPIO_WritePin ( Led_Red_4_GPIO_Port , Led_Red_4_Pin , RESET );
+	    				 HAL_GPIO_WritePin ( Led_Yellow_2_GPIO_Port , Led_Yellow_2_Pin , SET );
+	    				 HAL_GPIO_WritePin ( Led_Yellow_4_GPIO_Port , Led_Yellow_4_Pin , SET );
+	    				 HAL_GPIO_WritePin ( Led_Green_2_GPIO_Port , Led_Green_2_Pin , RESET );
+	    				 HAL_GPIO_WritePin ( Led_Green_4_GPIO_Port , Led_Green_4_Pin , RESET );
+	    	 }
+	    	 if(counter == 0)
+	    	 {
+	    		  led_status = 1;
+	    		  counter= 3;
+	    	 }
+	     }
+		 HAL_Delay (1000);
+  /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
 }
@@ -189,27 +256,22 @@ static void MX_GPIO_Init(void)
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOA_CLK_ENABLE();
-  __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, Led_Red_Pin|Led_Yellow_Pin|Led_Green_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, Led_Red_1_Pin|Led_Yellow_1_Pin|Led_Green_1_Pin|Led_Red_2_Pin
+                          |Led_Yellow_2_Pin|Led_Green_2_Pin|Led_Red_3_Pin|Led_Yellow_3_Pin
+                          |Led_Green_3_Pin|Led_Red_4_Pin|Led_Yellow_4_Pin|Led_Green_4_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, Led_Red_2_Pin|Led_Yellow_2_Pin|Led_Green_2_Pin, GPIO_PIN_RESET);
-
-  /*Configure GPIO pins : Led_Red_Pin Led_Yellow_Pin Led_Green_Pin */
-  GPIO_InitStruct.Pin = Led_Red_Pin|Led_Yellow_Pin|Led_Green_Pin;
+  /*Configure GPIO pins : Led_Red_1_Pin Led_Yellow_1_Pin Led_Green_1_Pin Led_Red_2_Pin
+                           Led_Yellow_2_Pin Led_Green_2_Pin Led_Red_3_Pin Led_Yellow_3_Pin
+                           Led_Green_3_Pin Led_Red_4_Pin Led_Yellow_4_Pin Led_Green_4_Pin */
+  GPIO_InitStruct.Pin = Led_Red_1_Pin|Led_Yellow_1_Pin|Led_Green_1_Pin|Led_Red_2_Pin
+                          |Led_Yellow_2_Pin|Led_Green_2_Pin|Led_Red_3_Pin|Led_Yellow_3_Pin
+                          |Led_Green_3_Pin|Led_Red_4_Pin|Led_Yellow_4_Pin|Led_Green_4_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-
-  /*Configure GPIO pins : Led_Red_2_Pin Led_Yellow_2_Pin Led_Green_2_Pin */
-  GPIO_InitStruct.Pin = Led_Red_2_Pin|Led_Yellow_2_Pin|Led_Green_2_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
 }
 
