@@ -1,0 +1,22 @@
+17:14:06 **** Incremental Build of configuration Debug for project Task2_4 ****
+make -j8 all 
+arm-none-eabi-gcc -o "Task2_4.elf" @"objects.list"   -mcpu=cortex-m3 -T"D:\BRAIN\HCMUT\vixuly_Lab\LeThanhKhai\Lab2\Task2_4\STM32F103C6UX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Task2_4.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Task2_4.elf
+ 
+arm-none-eabi-size   Task2_4.elf 
+arm-none-eabi-objdump -h -S  Task2_4.elf  > "Task2_4.list"
+arm-none-eabi-objcopy  -O ihex  Task2_4.elf  "Task2_4.hex"
+   text	   data	    bss	    dec	    hex	filename
+   8056	     28	   1644	   9728	   2600	Task2_4.elf
+arm-none-eabi-objcopy  -O binary  Task2_4.elf  "Task2_4.bin"
+Finished building: default.size.stdout
+ 
+Finished building: Task2_4.hex
+Finished building: Task2_4.bin
+ 
+ 
+Finished building: Task2_4.list
+ 
+
+17:14:06 Build Finished. 0 errors, 0 warnings. (took 515ms)
+

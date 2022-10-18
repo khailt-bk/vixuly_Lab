@@ -1,0 +1,39 @@
+!SESSION 2022-10-18 16:07:45.627 -----------------------------------------------
+eclipse.buildId=Version 1.10.1
+java.version=11.0.14.1
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2022-10-18 16:08:25.264
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2022-10-18 16:08:25.433
+!MESSAGE Log4j initialized with config file D:\BRAIN\HCMUT\vixuly_Lab\LeThanhKhai\Lab2\.metadata\.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2022-10-18 16:08:28.955
+!MESSAGE Started RMI Server, listening on port 41338
+
+!ENTRY org.eclipse.cdt.core 1 0 2022-10-18 16:09:57.669
+!MESSAGE Indexed 'Task2_1' (17 sources, 78 headers) in 5.38 sec: 3,631 declarations; 13,033 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.012%)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.launch 2 0 2022-10-18 16:12:48.685
+!MESSAGE Won't launch debug session since we failed to locate the binary.
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.launch 2 0 2022-10-18 16:13:36.697
+!MESSAGE Won't launch debug session since we failed to locate the binary.
+
+!ENTRY org.eclipse.cdt.core 1 0 2022-10-18 16:45:16.849
+!MESSAGE Indexed 'Task2_2' (17 sources, 78 headers) in 1.81 sec: 3,631 declarations; 13,033 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.012%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2022-10-18 16:53:42.345
+!MESSAGE Indexed 'Task2_3' (17 sources, 78 headers) in 1.85 sec: 3,631 declarations; 13,033 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.012%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2022-10-18 17:07:28.018
+!MESSAGE Indexed 'Task2_4' (17 sources, 78 headers) in 1.69 sec: 3,631 declarations; 13,033 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.012%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2022-10-18 20:22:57.488
+!MESSAGE Indexed 'Task2_5' (17 sources, 78 headers) in 1.61 sec: 3,631 declarations; 13,033 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.012%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2022-10-18 20:30:14.680
+!MESSAGE Indexed 'Task2_6' (17 sources, 78 headers) in 1.43 sec: 3,631 declarations; 13,033 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.012%)
