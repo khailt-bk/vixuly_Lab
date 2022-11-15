@@ -1,0 +1,5 @@
+../Core/Src/check.c:9:6:checkCount	8	static
+../Core/Src/check.c:75:6:ledMode2	8	static
+../Core/Src/check.c:87:6:ledMode3	8	static
+../Core/Src/check.c:99:6:ledMode4	8	static
+../Core/Src/check.c:111:6:checkMode	8	static
