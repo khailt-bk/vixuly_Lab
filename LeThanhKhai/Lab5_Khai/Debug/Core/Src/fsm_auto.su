@@ -1,0 +1,4 @@
+fsm_auto.c:21:6:uart_communiation_fsm	8	static
+fsm_auto.c:45:6:command_parser_fsm	8	static
+fsm_auto.c:76:6:Reset_Buffer	8	static
+fsm_auto.c:81:6:ReceiveADC	16	static
