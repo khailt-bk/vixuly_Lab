@@ -16,16 +16,16 @@ const uint8_t cmd_OK[] = "!OK#";
 //reset buffer command
 void Reset_Buffer();
 //===================/fsm/==========================
-uint8_t UART_state = INIT;
+uint8_t state = INIT;
 
 void uart_communiation_fsm (){
-	switch(UART_state){
+	switch(state){
 	case INIT:
 		break;
-	case GET_ADC:
-		ReceiveADC(GET_NEW_ADC);
+	case ADC:
+		ReceiveADC(NEW_ADC);
 		setTimer1(1000);
-		UART_state= WAIT;
+		state= WAIT;
 		break;
 	case WAIT:
 		if(timer1_flag == 1){
@@ -35,8 +35,8 @@ void uart_communiation_fsm (){
 			setTimer1(1000);
 		}
 		break;
-	case ENROR:
-		UART_state = INIT;
+	case ERROR:
+		state = INIT;
 		break;
 	}
 }
@@ -47,23 +47,23 @@ void command_parser_fsm (){
 		case 0:
 		case 1:
 		case 2:
-			UART_state = INIT;
+			state = INIT;
 			break;
 		case 4:
 			if (strcmp((void*)buffer, (void*)cmd_OK) == 0){
-						UART_state = INIT;
+						state = INIT;
 			}
 			else {
 //				ERROR_CODE = CMD_NOT_EXISTED;
-				UART_state = ENROR;
+				state = ERROR;
 			}
 			break;
 		case 5:
 			if (strcmp((void*)buffer, (void*)cmd_RST) == 0)
-				{UART_state = GET_ADC;}
+				{state = ADC;}
 			else {
 //				ERROR_CODE = CMD_NOT_EXISTED;
-				UART_state = ENROR;
+				state = ERROR;
 			}
 			break;
 		default:
@@ -81,7 +81,7 @@ void Reset_Buffer(){
 void ReceiveADC(int mode ){
 	if (mode == GET_OLD_ADC)
 			HAL_UART_Transmit(&huart2, response_format_1_old, sizeof(response_format_1_old), 100);
-		else if (mode == GET_NEW_ADC) {
+		else if (mode == NEW_ADC) {
 			HAL_UART_Transmit(&huart2, response_format_1_new, sizeof(response_format_1_new), 100);
 			HAL_ADC_Start(&hadc1);
 			ADC_value = HAL_ADC_GetValue(&hadc1);
